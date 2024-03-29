@@ -1,9 +1,9 @@
 #LoadWCSim Config File
 # all variables retrieved with m_variables.Get() must be defined here!
-verbose 0
+verbose 2
 
 #InputFile /pnfs/annie/persistent/simulations/wcsim/G1810a0211a/standard/tank/pmt/wcsim_0* #James's files
-InputFile /pnfs/exp/annie/data/users/akonsta/tank_to_use/wcsim_0* #ones currently needed
+InputFile /exp/annie/data/users/akonsta/tank_to_use/wcsim_0* #ones currently needed
 
 
 TriggerType Beam
