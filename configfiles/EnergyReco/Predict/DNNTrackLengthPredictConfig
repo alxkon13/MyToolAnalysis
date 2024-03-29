@@ -3,7 +3,7 @@
 
 PythonScript DNNTrackLengthPredict
 
-verbose 1
+verbose 6
 
 # DNN model, weights etc
 TrackLengthWeightsFile UserTools/DNNTrackLength/stand_alone/weights/weights_bets.hdf5
