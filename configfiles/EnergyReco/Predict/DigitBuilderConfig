@@ -6,6 +6,6 @@ ParametricModel 1
 IsMC 1
 DigitChargeThr 20
 # There are three configurations: "PMT_only", "LAPPD_only", "All"
-PhotoDetectorConfiguration PMT_only
+PhotoDetectorConfiguration All
 #File must be in /pnfs/ space when loading on Fermilab cluster
 LAPPDIDFile configfiles/EnergyReco/Predict/LAPPDIDs.txt
