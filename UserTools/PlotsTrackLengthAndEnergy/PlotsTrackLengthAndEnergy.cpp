@@ -70,7 +70,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
-      deltaenergy.Fill(deltaE);
+      deltaenergy.FillRandom("gaus",10000);
     
       cout << "ΔE/E = " << deltaE << endl;
     
