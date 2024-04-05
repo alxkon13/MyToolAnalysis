@@ -51,7 +51,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D deltaenergy("Energy Deviation over Energy", "Energy Relative Deviation", 0.1 , 0., 0.); 
 
     for(int i=0; i<n_entries; i++){
-      double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
+      double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max;
       float TrueTrackLengthInWater;
       
       EnergyReco.GetEntry(i);
@@ -62,7 +62,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("BDTMuonEnergy",BDTMuonEnergy);
       EnergyReco.Get("lambda_max",lambda_max);
   
-      deltaE = 100*TMath::Abs(trueMuonEnergy-BDTMuonEnergy)/trueMuonEnergy;
+      #deltaE = 100*TMath::Abs(trueMuonEnergy-BDTMuonEnergy)/trueMuonEnergy;
   
       lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
       energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
@@ -70,9 +70,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
-      deltaenergy.Fill(deltaE);
+      deltaenergy.Fill(100*TMath::Abs(trueMuonEnergy-BDTMuonEnergy)/trueMuonEnergy);
     
-      cout << "ΔE/E = " << deltaE << endl;
+      #cout << "ΔE/E = " << deltaE << endl;
     
     }
     
