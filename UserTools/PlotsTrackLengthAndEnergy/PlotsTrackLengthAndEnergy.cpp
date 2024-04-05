@@ -62,7 +62,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("BDTMuonEnergy",BDTMuonEnergy);
       EnergyReco.Get("lambda_max",lambda_max);
   
-      deltaE = (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
+      deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
   
       lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
       energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
