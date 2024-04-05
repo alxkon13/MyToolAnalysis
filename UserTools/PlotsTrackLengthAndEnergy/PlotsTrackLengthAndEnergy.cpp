@@ -70,7 +70,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
-      deltaenergy.FillRandom("gaus",10000);
+      deltaenergy.Fill(deltaE);
     
       cout << "ΔE/E = " << deltaE << endl;
     
@@ -106,7 +106,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend.Draw();
     c3.SaveAs("resol_energy.png");
     
-    c4.cd();
+    //*c4.cd();
     lengthresol1.Draw();
     lengthresol1.SetStats(0);
     lengthresol2.SetLineColor(kRed);
@@ -117,16 +117,15 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.AddEntry(&lengthresol2,"#DeltaR = |lambda_{max}-L_{MC}| [cm]","l");
     legend1.AddEntry((TObject*)0, TString::Format("mean = %.2f, std = %.2f, Prev: mean = %.2f, std = %.2f ", lengthresol1.GetMean(),lengthresol1.GetStdDev(),lengthresol2.GetMean(),lengthresol2.GetStdDev()), "");
     legend1.Draw("Same");
-    c4.SaveAs("resol_length.png");
+    c4.SaveAs("resol_length.png");*//
     
-    c5.cd();
+    c4.cd();
     deltaenergy.Draw();
     deltaenergy.SetStats(0);
     TLegend legend2(0.7,0.7,0.9,0.9);
     legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
     legend2.Draw("Same");
-    c5.Draw();
-    c5.SaveAs("deltaenergy.png");
+    c4.SaveAs("deltaenergy.png");
   
   return true;
 }
