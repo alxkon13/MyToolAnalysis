@@ -40,6 +40,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TCanvas c2("c2","c2",1280,1024);
     TCanvas c3("c3","c3",1280,1024);
     TCanvas c4("c4","c4",1280,1024);
+    TCanvas c5("c5","c5",1280,1024);
     
     TH2D lengthhist("True_RecoLength", "; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
     TH2D energyhist("True_Reco_Energy", ";  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
@@ -47,7 +48,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 400);
     TH1D energyresol1("MC Energy", "Energy Resolution", 100, 0, 2000);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 2000);
-
+    TH1D deltaenergy("Energy Deviation over Energy", "Energy Relative Deviation"); 
+  
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max;
       float TrueTrackLengthInWater;
@@ -67,8 +69,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
       
-      double deltaE = (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
-      cout << "ΔE/E = " << deltaE << endl;
+      double deltaE= (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
+      //cout << "ΔE/E = " << deltaE << endl;//
+      deltaenergy.Fill(deltaE);
     }
     
     c1.cd();
@@ -113,7 +116,15 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.AddEntry((TObject*)0, TString::Format("mean = %.2f, std = %.2f, Prev: mean = %.2f, std = %.2f ", lengthresol1.GetMean(),lengthresol1.GetStdDev(),lengthresol2.GetMean(),lengthresol2.GetStdDev()), "");
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
-    
+
+    c5.cd
+    deltaenergy.Draw():
+    deltaenergy.SetStats(0);
+    TLegend legend(0.7,0.7,0.9,0.9);
+    legend.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}","l");
+    legend.Draw("Same")
+    c5.SaveAs("deltaenergy.png")
+  
   return true;
 }
 
