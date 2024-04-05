@@ -125,7 +125,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TLegend legend2(0.7,0.7,0.9,0.9);
     legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
     legend2.Draw("Same");
-    c5.Draw()
+    c5.Draw();
     c5.SaveAs("deltaenergy.png");
   
   return true;
