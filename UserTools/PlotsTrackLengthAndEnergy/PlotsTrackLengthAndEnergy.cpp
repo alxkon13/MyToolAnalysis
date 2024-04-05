@@ -63,6 +63,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("lambda_max",lambda_max);
   
       deltaE = (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
+      
+      cout << "ΔE/E = " << deltaE << endl;
   
       lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
       energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
@@ -123,8 +125,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
     legend2.Draw("Same");
     c5.SaveAs("deltaenergy.png");
-    
-    cout << "ΔE/E = " << deltaE << endl;
     
   return true;
 }
