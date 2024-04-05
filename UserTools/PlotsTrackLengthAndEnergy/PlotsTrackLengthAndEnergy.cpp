@@ -70,7 +70,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
       lengthresol1.Fill(TMath::Abs(DNNRecoLength-TrueTrackLengthInWater));
       lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
-      energyresol1.Fill(trueMuonEnergy);
+      energyresol1.Fill(deltaE);
       energyresol2.Fill(BDTMuonEnergy);
       deltaenergy.Fill(deltaE);
     }
@@ -96,9 +96,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c3.cd();
     energyresol1.Draw();
     energyresol1.SetStats(0);
-    energyresol2.SetLineColor(kRed);
-    energyresol2.SetStats(0);
-    energyresol2.Draw("Same");
+    //energyresol2.SetLineColor(kRed);
+    //energyresol2.SetStats(0);
+    //energyresol2.Draw("Same");
     TLegend legend(0.7,0.7,0.9,0.9);
     legend.AddEntry(&energyresol1,"MC Energy [MeV]","l");
     legend.AddEntry(&energyresol2,"Reco Energy [MeV]","l");
@@ -121,7 +121,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c5.cd();
     deltaenergy.Draw();
     deltaenergy.SetStats(0);
-    deltaenergy.Draw("ColZ");
     TLegend legend2(0.7,0.7,0.9,0.9);
     legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
     legend2.Draw("Same");
