@@ -48,7 +48,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 400);
     TH1D energyresol1("MC Energy", "Energy Resolution", 100, 0, 0);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 2000);
-    TH1D deltaenergy("Energy Relative Error", "Energy Relative Deviation", 10, 0, 0); 
+    TH1D deltaenergy("Energy Relative Error", "Energy Relative Deviation", 1000, 0, 0); 
 
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
@@ -70,7 +70,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
       lengthresol1.Fill(TMath::Abs(DNNRecoLength-TrueTrackLengthInWater));
       lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
-      energyresol1.Fill(deltaE);
+      energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
       deltaenergy.Fill(deltaE);
     }
