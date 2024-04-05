@@ -71,6 +71,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
       deltaenergy.Fill(deltaE);
+    
+      cout << "ΔE/E = " << deltaE << endl;
+    
     }
     
     c1.cd();
@@ -123,8 +126,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
     legend2.Draw("Same");
     c5.SaveAs("deltaenergy.png");
-
-    cout << "ΔE/E = " << deltaE << endl;
   
   return true;
 }
