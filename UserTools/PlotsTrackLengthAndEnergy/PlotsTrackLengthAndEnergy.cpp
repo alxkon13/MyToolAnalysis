@@ -66,6 +66,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
+      
+      d = (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
+      cout << "ΔE/E = " << d << ednl;
     }
     
     c1.cd();
