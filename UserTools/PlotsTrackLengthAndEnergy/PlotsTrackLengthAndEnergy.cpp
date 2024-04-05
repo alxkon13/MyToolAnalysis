@@ -40,7 +40,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TCanvas c2("c2","c2",1280,1024);
     TCanvas c3("c3","c3",1280,1024);
     TCanvas c4("c4","c4",1280,1024);
-    TCanvas c5("c5","c5",1280,1024);
     
     TH2D lengthhist("True_RecoLength", "; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
     TH2D energyhist("True_Reco_Energy", ";  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
@@ -48,7 +47,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 400);
     TH1D energyresol1("MC Energy", "Energy Resolution", 100, 0, 2000);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 2000);
-    TH1D deltaenergy("Energy Deviation over Energy", "Energy Relative Deviation", 1 , 0., 0.); 
 
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max;
@@ -62,17 +60,12 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("BDTMuonEnergy",BDTMuonEnergy);
       EnergyReco.Get("lambda_max",lambda_max);
   
-      //deltaE = 100*TMath::Abs(trueMuonEnergy-BDTMuonEnergy)/trueMuonEnergy;
-  
       lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
       energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
       lengthresol1.Fill(TMath::Abs(DNNRecoLength-TrueTrackLengthInWater));
       lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
-      deltaenergy.Fill(100*TMath::Abs(trueMuonEnergy-BDTMuonEnergy)/trueMuonEnergy);
-    
-      //cout << "ΔE/E = " << deltaE << endl;
     
     }
     
@@ -118,14 +111,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.AddEntry((TObject*)0, TString::Format("mean = %.2f, std = %.2f, Prev: mean = %.2f, std = %.2f ", lengthresol1.GetMean(),lengthresol1.GetStdDev(),lengthresol2.GetMean(),lengthresol2.GetStdDev()), "");
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
-    
-    c5.cd();
-    deltaenergy.Draw();
-    deltaenergy.SetStats(0);
-    TLegend legend2(0.7,0.7,0.9,0.9);
-    legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
-    legend2.Draw("Same");
-    c5.SaveAs("deltaenergy.png");
   
   return true;
 }
