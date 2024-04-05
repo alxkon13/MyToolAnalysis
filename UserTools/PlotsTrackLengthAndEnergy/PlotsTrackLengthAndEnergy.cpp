@@ -67,8 +67,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
       
-      d = (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
-      cout << "ΔE/E = " << d << endl;
+      deltaE = (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
+      cout << "ΔE/E = " << deltaE << endl;
     }
     
     c1.cd();
