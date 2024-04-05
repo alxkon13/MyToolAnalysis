@@ -123,14 +123,14 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
     legend2.Draw("Same");
     c5.SaveAs("deltaenergy.png");
-    
+
+    cout << "ΔE/E = " << deltaE << endl;
+  
   return true;
 }
 
 
 bool PlotsTrackLengthAndEnergy::Finalise(){
-
-  cout << "ΔE/E = " << deltaE << endl;
-
+  
   return true;
 }
