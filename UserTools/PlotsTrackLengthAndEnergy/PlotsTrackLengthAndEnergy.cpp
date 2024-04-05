@@ -48,7 +48,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 400);
     TH1D energyresol1("MC Energy", "Energy Resolution", 100, 0, 0);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 2000);
-    TH1D deltaenergy("Energy Deviation over Energy", "Energy Relative Deviation", 1 , 0, 0); 
+    TH1D deltaenergy("Energy Relative Error", "Energy Relative Deviation", 100, 0, 0); 
 
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
@@ -124,7 +124,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TLegend legend2(0.7,0.7,0.9,0.9);
     legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
     legend2.Draw("Same");
-    c5.Update();
     c5.SaveAs("deltaenergy.png");
     
   return true;
