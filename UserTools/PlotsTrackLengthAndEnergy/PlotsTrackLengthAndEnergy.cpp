@@ -117,7 +117,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
 
-    c5.cd
+    c5.cd();
     deltaenergy.Draw():
     deltaenergy.SetStats(0);
     TLegend legend(0.7,0.7,0.9,0.9);
