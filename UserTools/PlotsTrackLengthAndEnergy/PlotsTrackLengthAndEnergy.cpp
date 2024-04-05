@@ -49,9 +49,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D energyresol1("MC Energy", "Energy Resolution", 100, 0, 2000);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 2000);
     TH1D deltaenergy("Energy Deviation over Energy", "Energy Relative Deviation", 0.001 , 0, 0.01); 
-  
+
     for(int i=0; i<n_entries; i++){
-      double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max;
+      double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
       float TrueTrackLengthInWater;
       
       EnergyReco.GetEntry(i);
@@ -62,15 +62,14 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("BDTMuonEnergy",BDTMuonEnergy);
       EnergyReco.Get("lambda_max",lambda_max);
   
+      deltaE = (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
+  
       lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
       energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
       lengthresol1.Fill(TMath::Abs(DNNRecoLength-TrueTrackLengthInWater));
       lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
       energyresol1.Fill(trueMuonEnergy);
       energyresol2.Fill(BDTMuonEnergy);
-      
-      double deltaE= (TMath::Abs(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
-      cout << "ΔE/E = " << deltaE << endl;//
       deltaenergy.Fill(deltaE);
     }
     
@@ -116,7 +115,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.AddEntry((TObject*)0, TString::Format("mean = %.2f, std = %.2f, Prev: mean = %.2f, std = %.2f ", lengthresol1.GetMean(),lengthresol1.GetStdDev(),lengthresol2.GetMean(),lengthresol2.GetStdDev()), "");
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
-
+    
     c5.cd();
     deltaenergy.Draw();
     deltaenergy.SetStats(0);
@@ -124,12 +123,14 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry(&deltaenergy, "#DeltaE / E= |E_{Reco}-E_{MC}|/E_{Reco}");
     legend2.Draw("Same");
     c5.SaveAs("deltaenergy.png");
-  
+    
   return true;
 }
 
 
 bool PlotsTrackLengthAndEnergy::Finalise(){
-  
+
+  cout << "ΔE/E = " << deltaE << endl;
+
   return true;
 }
