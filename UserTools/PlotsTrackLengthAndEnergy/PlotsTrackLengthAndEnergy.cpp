@@ -48,7 +48,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 400);
     TH1D energyresol1("MC Energy", "Energy Resolution", 100, 0, 0);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 2000);
-    TH1D deltaenergy("Energy Relative Error", "Energy Relative Deviation", 100, 0, 0); 
+    TH1D deltaenergy("Energy Relative Error %", "Energy Relative Deviation %", 100, 0, 0); 
 
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
@@ -94,9 +94,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c3.cd();
     energyresol1.Draw();
     energyresol1.SetStats(0);
-    //energyresol2.SetLineColor(kRed);
-    //energyresol2.SetStats(0);
-    //energyresol2.Draw("Same");
+    energyresol2.SetLineColor(kRed);
+    energyresol2.SetStats(0);
+    energyresol2.Draw("Same");
     TLegend legend(0.7,0.7,0.9,0.9);
     legend.AddEntry(&energyresol1,"MC Energy [MeV]","l");
     legend.AddEntry(&energyresol2,"Reco Energy [MeV]","l");
@@ -121,6 +121,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     deltaenergy.SetStats(0);
     TLegend legend2(0.7,0.7,0.9,0.9);
     legend2.AddEntry(&deltaenergy, "#DeltaE/E=E_{Reco}-E_{MC}|/E_{Reco}");
+    legend2.AddEntry((TObject*)0, TString::Format("mean = %.4f, std = %.4f", deltaenergy.GetMean(),deltaenergy.GetStdDev(),"");
     legend2.Draw("Same");
     c5.SaveAs("deltaenergy.png");
     
