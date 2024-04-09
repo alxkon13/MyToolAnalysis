@@ -48,7 +48,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 0);
     TH1D energyresol1("MC Energy", "Energy Resolution;Energy [MeV]", 100, 0, 0);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
-    TH1D deltaenergy("Energy Relative Error %", "Energy Relative Deviation %;#DeltaE/E (%)", 100, 0, 0); 
+    TH1D deltaenergy("Energy Relative Error %", 100, 0, 0); 
 
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
@@ -120,7 +120,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
 
-    std::string str = "Energy Relative Deviation %;#DeltaE/E (%%) | mean =" + std::to_string(deltaenergy.GetMean()) + "%, std =" + std::to_string(deltaenergy.GetStdDev()) + "%";
+    std::string str = "Energy Relative Deviation %;#DeltaE/E (%) | mean =" + std::to_string(deltaenergy.GetMean()) + "%, std =" + std::to_string(deltaenergy.GetStdDev()) + "%";
     const char *title = str.c_str();
   
     c5.cd();
@@ -132,7 +132,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry((TObject*)0, TString::Format("mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev()), "");
     legend2.Draw("Same");
     deltaenergy.SetFillColorAlpha(kBlue-4, 0.35);
-    deltaenergy.SetTitle(title);
+    deltaenergy.SetTitle(title;#DeltaE/E (%));
     c5.SaveAs("deltaenergy.png");
     
   return true;
