@@ -124,8 +124,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry(&deltaenergy, "#DeltaE/E=(E_{MC}-E_{Reco})/E_{MC}");
     legend2.AddEntry((TObject*)0, TString::Format("mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev()), "");
     legend2.Draw("Same");
-    c5.SetFillStyle(4050);
-    c5.SetFillColor(kAzure-5);
+    deltaenergy.SetFillStyle(4050);
+    deltaenergy.SetFillColor(kAzure-5);
     c5.SaveAs("deltaenergy.png");
     
   return true;
