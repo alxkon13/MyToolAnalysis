@@ -47,7 +47,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D lengthresol1("wDNNRecolength", "Length Resolution", 80, 0, 400);
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 400);
     TH1D energyresol1("MC Energy", "Energy Resolution", 100, 0, 0);
-    TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 2000);
+    TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
     TH1D deltaenergy("Energy Relative Error %", "Energy Relative Deviation %", 100, 0, 0); 
 
     for(int i=0; i<n_entries; i++){
