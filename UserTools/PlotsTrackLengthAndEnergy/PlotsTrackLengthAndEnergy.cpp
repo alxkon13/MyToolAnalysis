@@ -94,7 +94,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c3.cd();
     energyresol1.Draw();
     energyresol1.SetStats(0);
+    energyresol1.SetFillColorAlpha(kBlue-4, 0.35);
     energyresol2.SetLineColor(kRed);
+    energyresol2.SetFillColorAlpha(kRed-5, 0.35);
     energyresol2.SetStats(0);
     energyresol2.Draw("Same");
     TLegend legend(0.7,0.7,0.9,0.9);
