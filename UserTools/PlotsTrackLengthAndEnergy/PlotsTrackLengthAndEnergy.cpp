@@ -96,7 +96,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     energyresol1.SetStats(0);
     energyresol1.SetFillColorAlpha(kBlue-4, 0.35);
     energyresol2.SetLineColor(kRed);
-    energyresol2.SetFillColorAlpha(kRed-5, 0.35);
+    //energyresol2.SetFillColorAlpha(kRed-5, 0.35);
     energyresol2.SetStats(0);
     energyresol2.Draw("Same");
     TLegend legend(0.7,0.7,0.9,0.9);
@@ -110,7 +110,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     lengthresol1.SetStats(0);
     lengthresol1.SetFillColorAlpha(kBlue-4, 0.35);
     lengthresol2.SetLineColor(kRed);
-    lengthresol2.SetFillColorAlpha(kRed-5, 0.35);
+    //lengthresol2.SetFillColorAlpha(kRed-5, 0.35);
     lengthresol2.SetStats(0);
     lengthresol2.Draw("Same");
     TLegend legend1(0.3,0.7,0.9,0.9);
