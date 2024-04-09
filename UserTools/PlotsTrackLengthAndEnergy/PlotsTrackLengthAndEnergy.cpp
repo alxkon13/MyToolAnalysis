@@ -106,7 +106,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c4.cd();
     lengthresol1.Draw();
     lengthresol1.SetStats(0);
-    lengthresol1.SetFillColorAlpha(kBlue-4), 0.35;
+    lengthresol1.SetFillColorAlpha(kBlue-4, 0.35);
     lengthresol2.SetLineColor(kRed);
     lengthresol2.SetFillColorAlpha(kRed-5, 0.35);
     lengthresol2.SetStats(0);
