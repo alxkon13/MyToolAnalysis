@@ -127,7 +127,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     deltaenergy.Draw();
     deltaenergy.SetStats(0);
     deltaenergy.SetTitle(title);
-    deltaenergy.SetTitleSize(0.3,"t");
+    deltaenergy.SetTitleSize(0.5,"t");
     c5.SetLogy();
     TLegend legend2(0.7,0.7,0.9,0.9);
     legend2.AddEntry(&deltaenergy, "#DeltaE/E=(E_{MC}-E_{Reco})/E_{MC}","l");
