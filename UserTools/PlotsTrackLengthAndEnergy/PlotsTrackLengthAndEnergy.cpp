@@ -129,7 +129,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry((TObject*)0, TString::Format("mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev()), "");
     legend2.Draw("Same");
     deltaenergy.SetFillColorAlpha(kBlue-4, 0.35);
-    deltaenergy.SetTitle("Energy Relative Deviation %%;#DeltaE/E (%%) | mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev() );
+    deltaenergy.SetTitle("Energy Relative Deviation %%;#DeltaE/E (%%) | mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev());
     c5.SaveAs("deltaenergy.png");
     
   return true;
