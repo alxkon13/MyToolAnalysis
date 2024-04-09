@@ -44,11 +44,11 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     
     TH2D lengthhist("True_RecoLength", "; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
     TH2D energyhist("True_Reco_Energy", ";  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
-    TH1D lengthresol1("wDNNRecolength", "Length Resolution", 80, 0, 0);
+    TH1D lengthresol1("wDNNRecolength", "Length Resolution:#DeltaR [cm]", 80, 0, 0);
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 0);
-    TH1D energyresol1("MC Energy", "Energy Resolution", 100, 0, 0);
+    TH1D energyresol1("MC Energy", "Energy Resolution;Energy [MeV]", 100, 0, 0);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
-    TH1D deltaenergy("Energy Relative Error %", "Energy Relative Deviation %;#DeltaE/E (%)", 100, 0, 0); 
+    TH1D deltaenergy("Energy Relative Error %", "Energy Relative Deviation %;#DeltaE/E (%)", 300, 0, 0); 
 
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
