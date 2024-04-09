@@ -109,8 +109,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     lengthresol1.SetFillStyle(4030);
     lengthresol1.SetFillColor(kAzure-5);
     lengthresol2.SetLineColor(kRed);
-    lengthresol1.SetFillStyle(4030);
-    lengthresol1.SetFillColor(kRed-5);
+    lengthresol2.SetFillStyle(4030);
+    lengthresol2.SetFillColor(kRed-5);
     lengthresol2.SetStats(0);
     lengthresol2.Draw("Same");
     TLegend legend1(0.3,0.7,0.9,0.9);
@@ -128,7 +128,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry(&deltaenergy, "#DeltaE/E=(E_{MC}-E_{Reco})/E_{MC}");
     legend2.AddEntry((TObject*)0, TString::Format("mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev()), "");
     legend2.Draw("Same");
-    deltaenergy.SetFillStyle(4030);
+    deltaenergy.SetFillStyle(4010);
     deltaenergy.SetFillColor(kAzure-5);
     c5.SaveAs("deltaenergy.png");
     
