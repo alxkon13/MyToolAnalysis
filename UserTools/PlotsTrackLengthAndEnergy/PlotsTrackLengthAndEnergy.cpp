@@ -44,7 +44,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     
     TH2D lengthhist("True_RecoLength", "; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
     TH2D energyhist("True_Reco_Energy", ";  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
-    TH1D lengthresol1("wDNNRecolength", "Length Resolution:#DeltaR [cm]", 80, 0, 0);
+    TH1D lengthresol1("wDNNRecolength", "Length Resolution;#DeltaR [cm]", 80, 0, 0);
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 0);
     TH1D energyresol1("MC Energy", "Energy Resolution;Energy [MeV]", 100, 0, 0);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
@@ -124,6 +124,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry(&deltaenergy, "#DeltaE/E=(E_{MC}-E_{Reco})/E_{MC}");
     legend2.AddEntry((TObject*)0, TString::Format("mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev()), "");
     legend2.Draw("Same");
+    c5.SetFillStyle(4050);
+    c5.SetFillColor(kAzure-5);
     c5.SaveAs("deltaenergy.png");
     
   return true;
