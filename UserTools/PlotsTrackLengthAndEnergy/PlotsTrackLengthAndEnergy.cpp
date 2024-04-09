@@ -119,7 +119,10 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.AddEntry((TObject*)0, TString::Format("mean = %.2f, std = %.2f, Prev: mean = %.2f, std = %.2f ", lengthresol1.GetMean(),lengthresol1.GetStdDev(),lengthresol2.GetMean(),lengthresol2.GetStdDev()), "");
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
-    
+
+    char title
+    title="Energy Relative Deviation %;#DeltaE/E (%%) | mean = + ("%.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev())
+  
     c5.cd();
     deltaenergy.Draw();
     deltaenergy.SetStats(0);
@@ -129,7 +132,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.AddEntry((TObject*)0, TString::Format("mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev()), "");
     legend2.Draw("Same");
     deltaenergy.SetFillColorAlpha(kBlue-4, 0.35);
-    deltaenergy.SetTitle("Energy Relative Deviation %%;#DeltaE/E (%%) | mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev());
+    deltaenergy.SetTitle();
     c5.SaveAs("deltaenergy.png");
     
   return true;
