@@ -125,6 +125,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     deltaenergy.SetStats(0);
     c5.SetLogy();
     TLegend legend2(0.7,0.7,0.9,0.9);
+    legend2.SetTextSize(20);
     legend2.AddEntry(&deltaenergy, "#DeltaE/E=(E_{MC}-E_{Reco})/E_{MC}","l");
     legend2.AddEntry((TObject*)0, TString::Format("mean = %.4f %%, std = %.4f %%", deltaenergy.GetMean(), deltaenergy.GetStdDev()), "");
     legend2.Draw("Same");
