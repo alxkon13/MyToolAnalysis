@@ -42,8 +42,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TCanvas c4("c4","c4",1280,1024);
     TCanvas c5("c5","c5",1280,1024);
     
-    TH2D lengthhist("True_RecoLength", "; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
-    TH2D energyhist("True_Reco_Energy", ";  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
+    TH2D lengthhist("True_RecoLength", "Reco Track Length vs MC Track Length; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
+    TH2D energyhist("True_Reco_Energy", "Reco Energy vs MC Energy;  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
     TH1D lengthresol1("wDNNRecolength", "Length Resolution;#DeltaR [cm]", 80, 0, 0);
     TH1D lengthresol2("wlambda_max", "Length Resolution", 80, 0, 0);
     TH1D energyresol1("MC Energy", "Energy Resolution;Energy [MeV]", 100, 0, 0);
@@ -128,7 +128,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     deltaenergy.SetStats(0);
     deltaenergy.SetTitle(title);
     deltaenergy.SetTitleSize(0.5,"t");
-    c5.SetLogy();
+    #c5.SetLogy();
     TLegend legend2(0.7,0.7,0.9,0.9);
     legend2.AddEntry(&deltaenergy, "#DeltaE/E=(E_{MC}-E_{Reco})/E_{MC}","l");
     legend2.Draw("Same");
