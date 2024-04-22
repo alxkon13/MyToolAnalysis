@@ -120,10 +120,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
 
-    std::stringstream meandeltaE;
-    std::stringstream stddeltaE;
-    meandeltaE<<std::fixed<<std::setprecision(2)<<deltaenergy.GetMean();
-    stddeltaE<<std::fixed<<std::setprecision(2)<<deltaenergy.GetStdDev();
     std::string str = "Energy Relative Deviation % | mean =" + std::to_string(deltaenergy.GetMean()) + ", std =" + std::to_string(deltaenergy.GetStdDev()) + ";#DeltaE/E (%)";
     const char *title = str.c_str();
   
