@@ -124,8 +124,12 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     std::stringstream meandeltaE;
     meandeltaE << std::fixed << std::setprecision(2) << meanDeltaE;
     std::string mean = meandeltaE.str();
+    double stdDeltaE = deltaenergy.GetStdDev();
+    std::stringstream stddeltaE;
+    stddeltaE << std::fixed << std::setprecision(2) << stdDeltaE;
+    std::string stddev = stddeltaE.str();
     //std::string str = "Energy Relative Deviation % | mean =" + std::to_string(deltaenergy.GetMean()) + ", std =" + std::to_string(deltaenergy.GetStdDev()) + ";#DeltaE/E (%)";
-    std::string str = "Energy Relative Deviation % | mean =" + mean + ", std =" + std::to_string(deltaenergy.GetStdDev()) + ";#DeltaE/E (%)";
+    std::string str = "Energy Relative Deviation % | mean =" + mean + ", std =" + stddev + ";#DeltaE/E (%)";
     const char *title = str.c_str();
   
     c5.cd();
