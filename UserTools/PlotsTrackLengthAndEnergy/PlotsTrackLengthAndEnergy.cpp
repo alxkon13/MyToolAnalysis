@@ -114,13 +114,13 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     lengthresol2.SetStats(0);
     lengthresol2.Draw("Same");
     TLegend legend1(0.3,0.7,0.9,0.9);
-    legend1.AddEntry(&lengthresol1,"#DeltaR = |L_{Reco}-L_{MC}| [cm]","l");
-    legend1.AddEntry(&lengthresol2,"#DeltaR = |lambda_{max}-L_{MC}| [cm]","l");
+    legend1.AddEntry(&lengthresol1,"#DeltaR = |L_{Reco}-L_{MC}| [cm]  (DNN Reco)","l");
+    legend1.AddEntry(&lengthresol2,"#DeltaR = |L_estimation-L_{MC}| [cm]","l");
     legend1.AddEntry((TObject*)0, TString::Format("mean = %.2f, std = %.2f, Prev: mean = %.2f, std = %.2f ", lengthresol1.GetMean(),lengthresol1.GetStdDev(),lengthresol2.GetMean(),lengthresol2.GetStdDev()), "");
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
 
-    std::string str = "Energy Relative Deviation % | mean =" + std::to_string(deltaenergy.GetMean()) + "%, std =" + std::to_string(deltaenergy.GetStdDev()) + "%;#DeltaE/E (%)";
+    std::string str = "Energy Relative Deviation % | mean =" + std::to_string(deltaenergy.GetMean()) + ", std =" + std::to_string(deltaenergy.GetStdDev()) + ";#DeltaE/E (%)";
     const char *title = str.c_str();
   
     c5.cd();
