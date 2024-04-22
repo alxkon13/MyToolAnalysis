@@ -120,7 +120,12 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.Draw("Same");
     c4.SaveAs("resol_length.png");
 
-    std::string str = "Energy Relative Deviation % | mean =" + std::to_string(deltaenergy.GetMean()) + ", std =" + std::to_string(deltaenergy.GetStdDev()) + ";#DeltaE/E (%)";
+    double meanDeltaE = deltaenergy.GetMean();
+    std::stringstream meandeltaE;
+    meandeltaE << std::fixed << std::setprecision(2) << meanDeltaE;
+    std::string mean = meandeltaE.str();
+    //std::string str = "Energy Relative Deviation % | mean =" + std::to_string(deltaenergy.GetMean()) + ", std =" + std::to_string(deltaenergy.GetStdDev()) + ";#DeltaE/E (%)";
+    std::string str = "Energy Relative Deviation % | mean =" + mean + ", std =" + std::to_string(deltaenergy.GetStdDev()) + ";#DeltaE/E (%)";
     const char *title = str.c_str();
   
     c5.cd();
@@ -128,7 +133,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     deltaenergy.SetStats(0);
     deltaenergy.SetTitle(title);
     deltaenergy.SetTitleSize(0.5,"t");
-    c5.SetLogy();
+    //c5.SetLogy();
     TLegend legend2(0.7,0.7,0.9,0.9);
     legend2.AddEntry(&deltaenergy, "#DeltaE/E=(E_{MC}-E_{Reco})/E_{MC}","l");
     legend2.Draw("Same");
