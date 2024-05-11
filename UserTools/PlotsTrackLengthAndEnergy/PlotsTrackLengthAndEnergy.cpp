@@ -50,10 +50,11 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
     TH1D deltaenergy("Relative Error", "Energy Relative Error %;#DeltaE/E (%)", 100, 0, 0); 
 
+    int k=0;
+  
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
       float TrueTrackLengthInWater;
-      int k=0;
       
       EnergyReco.GetEntry(i);
       
@@ -75,9 +76,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
 
           k+=1;
       }
-
-      std::cout<<"Number of entries with #DeltaE/E>=12.5% : "<<k<<std::endl;
-      
     }
     
     c1.cd();
@@ -150,7 +148,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend2.Draw("Same");
     deltaenergy.SetFillColorAlpha(kBlue-4, 0.35);
     c5.SaveAs("deltaenergy.png");
-    
+
+    std::cout<<"Number of entries with #DeltaE/E>=12.5% : "<<k<<std::endl;
+  
   return true;
 }
 
