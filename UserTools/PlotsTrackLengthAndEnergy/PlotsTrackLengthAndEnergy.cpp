@@ -53,6 +53,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
       float TrueTrackLengthInWater;
+      int k=0;
       
       EnergyReco.GetEntry(i);
       
@@ -63,7 +64,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("lambda_max",lambda_max);
   
       deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
-      if(abs(deltaE)>=10){
+      if(abs(deltaE)>=12.5){
           lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
           energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
           lengthresol1.Fill(TMath::Abs(DNNRecoLength-TrueTrackLengthInWater));
@@ -71,7 +72,12 @@ bool PlotsTrackLengthAndEnergy::Execute(){
           energyresol1.Fill(trueMuonEnergy);
           energyresol2.Fill(BDTMuonEnergy);
           deltaenergy.Fill(deltaE);
+
+          k+=1
       }
+
+      std::cout<<"Number of entries with #DeltaE/E>=12.5% : "<<k<<std::endl;
+      
     }
     
     c1.cd();
