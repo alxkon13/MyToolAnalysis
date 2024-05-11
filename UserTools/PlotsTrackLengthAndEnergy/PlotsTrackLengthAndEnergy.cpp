@@ -63,14 +63,15 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("lambda_max",lambda_max);
   
       deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
-  
-      lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
-      energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
-      lengthresol1.Fill(TMath::Abs(DNNRecoLength-TrueTrackLengthInWater));
-      lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
-      energyresol1.Fill(trueMuonEnergy);
-      energyresol2.Fill(BDTMuonEnergy);
-      deltaenergy.Fill(deltaE);
+      if(abs(deltaE)>=10){
+          lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
+          energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
+          lengthresol1.Fill(TMath::Abs(DNNRecoLength-TrueTrackLengthInWater));
+          lengthresol2.Fill(TMath::Abs(lambda_max-TrueTrackLengthInWater));
+          energyresol1.Fill(trueMuonEnergy);
+          energyresol2.Fill(BDTMuonEnergy);
+          deltaenergy.Fill(deltaE);
+      }
     }
     
     c1.cd();
