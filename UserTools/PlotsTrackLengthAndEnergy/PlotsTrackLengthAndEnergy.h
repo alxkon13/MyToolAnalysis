@@ -39,7 +39,7 @@ class PlotsTrackLengthAndEnergy: public Tool {
 	int v_message=2;
 	int v_debug=3;
 	std::string logmessage;
-
+	int get_ok;
 
 
 };
