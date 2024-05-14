@@ -68,10 +68,10 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("trueMuonEnergy",trueMuonEnergy);
       EnergyReco.Get("BDTMuonEnergy",BDTMuonEnergy);
       EnergyReco.Get("lambda_max",lambda_max);
-      /**EnergyReco.Get("diffDirAbs", diffDirAbs);
+      EnergyReco.Get("diffDirAbs", diffDirAbs);
       EnergyReco.Get("recoDWallR", recoDWallR);
       EnergyReco.Get("recoDWallZ", recoDWallZ);
-      EnergyReco.Get("recovVtxFOM", recoVtxFOM);**/
+      EnergyReco.Get("recovVtxFOM", recoVtxFOM);
   
       deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
       if(abs(deltaE)>=15){
