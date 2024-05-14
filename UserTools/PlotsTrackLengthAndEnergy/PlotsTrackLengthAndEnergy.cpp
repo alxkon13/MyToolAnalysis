@@ -53,8 +53,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     int k=0;
 
     std::string SelectedEvents;
-    //csvfile.open(SelectedEvents,std::fstream::out);
-    //csvfile<<"RecoLength"<<","<<"TrueLength"<<","<<"RecoEnergy"<<","<<"TrueEnergy"<<","<<"deltaE"<<","<<"diffDirAbs"<<","<<"recoVtxFOM"<<","<<"recoDWallR"<<","<<"recoDWallZ"<<",\n";
+    csvfile.open(SelectedEvents,std::fstream::out);
+    csvfile<<"RecoLength"<<","<<"TrueLength"<<","<<"RecoEnergy"<<","<<"TrueEnergy"<<","<<"deltaE"<<","<<"diffDirAbs"<<","<<"recoVtxFOM"<<","<<"recoDWallR"<<","<<"recoDWallZ"<<",\n";
   
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
@@ -83,11 +83,13 @@ bool PlotsTrackLengthAndEnergy::Execute(){
           energyresol2.Fill(BDTMuonEnergy);
           deltaenergy.Fill(deltaE);
 
-          //csvfile<<DNNRecoLength<<","<<TrueTrackLengthInWater<<","<<BDTMuonEnergy<<","<<trueMuonEnergy<<","<<deltaE<<","<<diffDirAbs<<","<<recoVtxFOM<<","<<recoDWallR<<","<<recoDWallZ<<",\n";
+          csvfile<<DNNRecoLength<<","<<TrueTrackLengthInWater<<","<<BDTMuonEnergy<<","<<trueMuonEnergy<<","<<deltaE<<","<<diffDirAbs<<","<<recoVtxFOM<<","<<recoDWallR<<","<<recoDWallZ<<",\n";
 
           k+=1;
       }
     }
+
+    csvfile.close();
   
     c1.cd();
     TLine line(0,0,400,400);
