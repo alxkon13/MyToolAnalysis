@@ -89,8 +89,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
           k+=1;
       }
     }
-
-    csvfile.close();
   
     c1.cd();
     TLine line(0,0,400,400);
