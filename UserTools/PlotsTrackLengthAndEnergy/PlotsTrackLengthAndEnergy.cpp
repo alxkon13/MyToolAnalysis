@@ -51,13 +51,14 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D deltaenergy("Relative Error", "Energy Relative Error %;#DeltaE/E (%)", 100, 0, 0); 
 
     int k=0;
-  
+
+    std::string SelectedEvents;
     csvfile.open(SelectedEvents,std::fstream::out);
     csvfile<<"RecoLength"<<","<<"TrueLength"<<","<<"RecoEnergy"<<","<<"TrueEnergy"<<","<<"deltaE"<<","<<"diffDirAbs"<<","<<"recoVtxFOM"<<","<<"recoDWallR"<<","<<"recoDWallZ"<<",\n";
   
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE;
-      double diffDirAbs, recoDWallR, recoDWallZ, recoVtxFOM
+      double diffDirAbs, recoDWallR, recoDWallZ, recoVtxFOM;
       float TrueTrackLengthInWater;
       
       EnergyReco.GetEntry(i);
