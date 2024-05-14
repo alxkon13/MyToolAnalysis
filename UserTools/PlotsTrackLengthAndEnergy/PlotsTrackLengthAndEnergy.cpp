@@ -55,7 +55,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     std::string OutputDataFile;
     get_ok = m_variables.Get("OutputDataFile",OutputDataFile);
   
-    csvfile.open(SelectedEvents,std::fstream::out);
+    csvfile.open(OutputDataFile,std::fstream::out);
     csvfile<<"RecoLength"<<","<<"TrueLength"<<","<<"RecoEnergy"<<","<<"TrueEnergy"<<","<<"deltaE"<<","<<"diffDirAbs"<<","<<"recoVtxFOM"<<","<<"recoDWallR"<<","<<"recoDWallZ"<<",\n";
   
     for(int i=0; i<n_entries; i++){
