@@ -1,1 +1,3 @@
 #PlotsTrackLengthAndEnergy config file
+
+OutputDataFile SelectedEvents.csv
