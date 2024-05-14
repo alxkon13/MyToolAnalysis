@@ -29,6 +29,7 @@ class PlotsTrackLengthAndEnergy: public Tool {
 
 
  private:
+   std::ofstream csvfile;
 
 // verbosity levels: if 'verbosity' < this level, the message type will be logged.
 	int verbosity=1;
