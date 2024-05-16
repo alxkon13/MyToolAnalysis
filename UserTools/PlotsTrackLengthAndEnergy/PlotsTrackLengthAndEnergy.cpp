@@ -53,7 +53,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
     TH1D deltaenergy("Relative Error", "Energy Relative Error %;#DeltaE/E (%)", 100, 0, 0); 
 
-    TH1D diffDirhist("diffDirAbs histogram", "diffDirAbs", 100, 0, 0);
+    TH1D diffDirhist1("diffDirAbs deltaE<10%", "diffDirAbs histogram", 100, 0, 0);
+    TH1D diffDirhist2("diffDirAbs deltaE>30%", "diffDirAbs", 100, 0, 0);
 
     int k=0;
 
@@ -85,8 +86,10 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
       deltaL = 100*(TrueTrackLengthInWater-DNNRecoLength)/TrueTrackLengthInWater;
 
-      if(abs(deltaE)<=15||abs(deltaE>=30)){
-          diffDirhist.Fill(diffDirAbs);
+      if(abs(deltaE)<=15){
+          diffDirhist1.Fill(diffDirAbs);
+      else if(abs(deltaE)>=30){
+          diffDirhist2.Fill(diffDirAbs);
       }
       
       //for specific event analysis
@@ -182,9 +185,16 @@ bool PlotsTrackLengthAndEnergy::Execute(){
 
     //for specific event analysis
     c6.cd();
-    diffDirhist.Draw();
-    diffDirhist.SetStats(0);
-    diffDirhist.SetFillColorAlpha(kBlue-4, 0.35);
+    diffDirhist1.Draw();
+    diffDirhist1.SetStats(0);
+    diffDirhist1.SetFillColorAlpha(kBlue-4, 0.35);
+    diffDirhist2.SetLineColor(kRed);
+    diffDirhist2.SetFillColorAlpha(kRed+2, 0.35);
+    diffDirhist2.Draw("Same");
+    TLegend legend3(0.7,0.7,0.9,0.9);
+    legend3.AddEntry(&diffDirhist1,"diffDirAbs for #DeltaE/E<=10%","l");
+    legend3.AddEntry(&diffDirhist2,"diffDirAbs for #DeltaE/E>=30%","l");
+    legend3.Draw("Same");
     c6.SaveAs("diffDirplot.png");
 
   return true;
