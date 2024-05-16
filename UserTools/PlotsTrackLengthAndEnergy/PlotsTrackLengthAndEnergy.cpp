@@ -100,8 +100,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
           deltaenergy.Fill(deltaE);
 
           csvfile<<DNNRecoLength<<","<<TrueTrackLengthInWater<<","<<BDTMuonEnergy<<","<<trueMuonEnergy<<","<<deltaE<<","<<deltaL<<","<<diffDirAbs<<","<<recoVtxFOM<<","<<recoDWallR<<","<<recoDWallZ<<",\n";
-
-          std::cout<<diffDirAbs<<std::endl;
         
           k+=1;
       }
