@@ -42,6 +42,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TCanvas c4("c4","c4",1280,1024);
     TCanvas c5("c5","c5",1280,1024);
     
+    //for specific event analysis  
+    TCanvas c6("c6","c6",1280,1024);
+    
     TH2D lengthhist("True_RecoLength", "Reco Track Length vs MC Track Length; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
     TH2D energyhist("True_Reco_Energy", "Reco Energy vs MC Energy;  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
     TH1D lengthresol1("wDNNRecolength", "Length Resolution;#DeltaR [cm]", 80, 0, 0);
@@ -49,6 +52,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D energyresol1("MC Energy", "Energy Resolution;Energy [MeV]", 100, 0, 0);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
     TH1D deltaenergy("Relative Error", "Energy Relative Error %;#DeltaE/E (%)", 100, 0, 0); 
+
+    TH1D diffDirhist("diffDirAbs histogram", "diffDirAbs", 100, 0, 0);
 
     int k=0;
 
@@ -70,6 +75,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("trueMuonEnergy",trueMuonEnergy);
       EnergyReco.Get("BDTMuonEnergy",BDTMuonEnergy);
       EnergyReco.Get("lambda_max",lambda_max);
+
+      //for specific event analysis  
       EnergyReco.Get("diffDirAbs", diffDirAbs);
       EnergyReco.Get("recoDWallR", recoDWallR);
       EnergyReco.Get("recoDWallZ", recoDWallZ);
@@ -77,6 +84,12 @@ bool PlotsTrackLengthAndEnergy::Execute(){
   
       deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
       deltaL = 100*(TrueTrackLengthInWater-DNNRecoLength)/TrueTrackLengthInWater;
+
+      if(abs(deltaE)<=15||abs(deltaE>=30){
+          diffDirhist.Fill(diffDirAbs);
+      }
+      
+      //for specific event analysis
       if(abs(deltaE)>=15){
           lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
           energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
@@ -168,7 +181,14 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c5.SaveAs("deltaenergy.png");
 
     std::cout<<"Number of entries with DeltaE/E>=15% : "<<k<<std::endl;
-  
+
+    //for specific event analysis
+    c6.cd();
+    diffDirhist.Draw();
+    diffDirhist.SetStats(0);
+    diffDirhist.SetFillColorAlpha(kBlue-4, 0.35);
+    c6.SaveAs("diffDirplot");
+
   return true;
 }
 
