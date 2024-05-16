@@ -186,6 +186,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
 
     //for specific event analysis
     c6.cd();
+    c6.SetLogy();
     diffDirhist1.Draw();
     diffDirhist1.SetStats(0);
     diffDirhist1.SetFillColorAlpha(kBlue-4, 0.35);
