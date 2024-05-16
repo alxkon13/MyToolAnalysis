@@ -185,7 +185,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     diffDirhist.Draw();
     diffDirhist.SetStats(0);
     diffDirhist.SetFillColorAlpha(kBlue-4, 0.35);
-    c6.SaveAs("diffDirplot");
+    c6.SaveAs("diffDirplot.png");
 
   return true;
 }
