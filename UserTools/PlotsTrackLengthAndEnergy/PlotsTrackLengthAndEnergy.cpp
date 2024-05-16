@@ -86,8 +86,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
       deltaL = 100*(TrueTrackLengthInWater-DNNRecoLength)/TrueTrackLengthInWater;
 
+      //for specific event analysis      
       if(abs(deltaE)<=15){
-          diffDirhist1.Fill(diffDirAbs);
+          diffDirhist1.Fill(diffDirAbs);}
       else if(abs(deltaE)>=30){
           diffDirhist2.Fill(diffDirAbs);
       }
