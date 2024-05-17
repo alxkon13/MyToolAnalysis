@@ -92,10 +92,10 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       
       //for specific event analysis      
       if(abs(deltaE)<15){
-          diffDirhist1.Fill(diffDirAbs);
-          mrdRecohist.Fill(trueMuonEnergy,recoTrackLengthInMrd);}
+          diffDirhist1.Fill(diffDirAbs);}
       else if(abs(deltaE)>30){
           diffDirhist2.Fill(diffDirAbs);
+          mrdRecohist.Fill(trueMuonEnergy,recoTrackLengthInMrd);
       }
       
       //for specific event analysis
