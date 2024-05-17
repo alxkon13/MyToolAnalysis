@@ -70,7 +70,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
   
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE, deltaL;
-      float diffDirAbs, recoDWallR, recoDWallZ, recoVtxFOM, recoMrd;
+      float diffDirAbs, recoDWallR, recoDWallZ, recoVtxFOM, recoTrackLengthInMrd;
       float TrueTrackLengthInWater;
       
       EnergyReco.GetEntry(i);
