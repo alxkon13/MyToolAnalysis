@@ -57,8 +57,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     //for specific event analysis  
     TH1D diffDirhist1("diffDirAbs deltaE<10%", "diffDirAbs histogram", 100, 0, 0);
     TH1D diffDirhist2("diffDirAbs deltaE>30%", "diffDirAbs", 100, 0, 0);
-    TH2D mrdRecohist1("recoTrackLengthInMrd deltaE<10%", "recoTrackLengthInMrd vs E_{MC}; E_{MC} [MeV]; Reco TRack Length in MRD [cm]", 100, 0, 2000.,   50, 0., 5.);
-    TH2D mrdRecohist2("recoTrackLengthInMrd deltaE>30%", "recoTrackLengthInMrd",  100, 0, 2000.,  50, 0., 5.);
+    TH2D mrdRecohist("recoTrackLengthInMrd deltaE<10%", "recoTrackLengthInMrd vs E_{MC}; E_{MC} [MeV]; Reco TRack Length in MRD [cm]", 100, 0, 2000., 50, 0., 5.);
   
     int k=0;
 
@@ -91,13 +90,14 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
       deltaL = 100*(TrueTrackLengthInWater-DNNRecoLength)/TrueTrackLengthInWater;
 
+      std::cout<<recoTrackLengthInMrd;
+      
       //for specific event analysis      
       if(abs(deltaE)<15){
           diffDirhist1.Fill(diffDirAbs);
-          mrdRecohist1.Fill(trueMuonEnergy,recoTrackLengthInMrd);}
+          mrdRecohist.Fill(trueMuonEnergy,recoTrackLengthInMrd);}
       else if(abs(deltaE)>30){
           diffDirhist2.Fill(diffDirAbs);
-          mrdRecohist2.Fill(trueMuonEnergy,recoTrackLengthInMrd);
       }
       
       //for specific event analysis
