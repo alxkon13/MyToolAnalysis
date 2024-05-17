@@ -57,7 +57,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     //for specific event analysis  
     TH1D diffDirhist1("diffDirAbs deltaE<10%", "diffDirAbs histogram", 100, 0, 0);
     TH1D diffDirhist2("diffDirAbs deltaE>30%", "diffDirAbs", 100, 0, 0);
-    TH2D mrdRecohist("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy, #DeltaE/E>30%; E_{MC} [MeV]; Reco TRack Length in MRD [cm]", 100, 0, 2000., 100, 0., 300.);
+    TH2D mrdRecohist("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy, #DeltaE/E>30%; E_{MC} [MeV]; Reco TRack Length in MRD [cm]");
   
     int k=0;
 
