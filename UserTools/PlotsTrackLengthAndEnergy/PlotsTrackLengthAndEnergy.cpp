@@ -57,7 +57,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     //for specific event analysis  
     TH1D diffDirhist1("diffDirAbs deltaE<10%", "diffDirAbs histogram", 100, 0, 0);
     TH1D diffDirhist2("diffDirAbs deltaE>30%", "diffDirAbs", 100, 0, 0);
-    TH2D mrdRecohist("recoTrackLengthInMrd deltaE<10%", "recoTrackLengthInMrd vs E_{MC}; E_{MC} [MeV]; Reco TRack Length in MRD [cm]", 100, 0, 2000., 50, 0., 5.);
+    TH2D mrdRecohist("recoTrackLengthInMrd deltaE<10%", "recoTrackLengthInMrd vs E_{MC}; E_{MC} [MeV]; Reco TRack Length in MRD [cm]", 100, 0, 2000., 50, 0., 400.);
   
     int k=0;
 
@@ -68,8 +68,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     csvfile<<"RecoLength"<<","<<"TrueLength"<<","<<"RecoEnergy"<<","<<"TrueEnergy"<<","<<"deltaE"<<","<<"deltaL"<<","<<"diffDirAbs"<<","<<"recoVtxFOM"<<","<<"recoDWallR"<<","<<"recoDWallZ"<<",\n";
   
     for(int i=0; i<n_entries; i++){
-      double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE, deltaL;
-      float diffDirAbs, recoDWallR, recoDWallZ, recoVtxFOM, recoTrackLengthInMrd;
+      double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE, deltaL, recoTrackLengthInMrd;
+      float diffDirAbs, recoDWallR, recoDWallZ, recoVtxFOM;
       float TrueTrackLengthInWater;
       
       EnergyReco.GetEntry(i);
