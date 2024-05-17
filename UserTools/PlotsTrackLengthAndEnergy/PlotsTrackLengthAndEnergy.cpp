@@ -44,7 +44,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     
     //for specific event analysis  
     TCanvas c6("c6","c6",1280,1024);
-    
+    TCanvas c7("c7","c7",1280,1024);
+  
     TH2D lengthhist("True_RecoLength", "Reco Track Length vs MC Track Length; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
     TH2D energyhist("True_Reco_Energy", "Reco Energy vs MC Energy;  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
     TH1D lengthresol1("wDNNRecolength", "Length Resolution;#DeltaR [cm]", 80, 0, 0);
@@ -53,9 +54,12 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
     TH1D deltaenergy("Relative Error", "Energy Relative Error %;#DeltaE/E (%)", 100, 0, 0); 
 
+    //for specific event analysis  
     TH1D diffDirhist1("diffDirAbs deltaE<10%", "diffDirAbs histogram", 100, 0, 0);
     TH1D diffDirhist2("diffDirAbs deltaE>30%", "diffDirAbs", 100, 0, 0);
-
+    TH2D mrdRecohist1("recoTrackLengthInMrd deltaE<10%", "recoTrackLengthInMrd vs E-{MC}; E_{MC} [MeV]; Reco TRack Length in MRD [cm]", 100, 0, 2000.,  50, 0., 400.);
+    TH2D mrdRecohist2("recoTrackLengthInMrd deltaE>30%", "recoTrackLengthInMrd",  100, 0, 2000.,  50, 0., 400.);
+  
     int k=0;
 
     std::string OutputDataFile;
@@ -66,7 +70,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
   
     for(int i=0; i<n_entries; i++){
       double DNNRecoLength, trueMuonEnergy, BDTMuonEnergy, lambda_max, deltaE, deltaL;
-      float diffDirAbs, recoDWallR, recoDWallZ, recoVtxFOM;
+      float diffDirAbs, recoDWallR, recoDWallZ, recoVtxFOM, recoMrd;
       float TrueTrackLengthInWater;
       
       EnergyReco.GetEntry(i);
@@ -82,15 +86,18 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       EnergyReco.Get("recoDWallR", recoDWallR);
       EnergyReco.Get("recoDWallZ", recoDWallZ);
       EnergyReco.Get("recovVtxFOM", recoVtxFOM);
+      EnergyReco.Get("recoMrd", recoTrackLengthInMrd);
   
       deltaE = (100*(trueMuonEnergy-BDTMuonEnergy))/trueMuonEnergy;
       deltaL = 100*(TrueTrackLengthInWater-DNNRecoLength)/TrueTrackLengthInWater;
 
       //for specific event analysis      
-      if(abs(deltaE)<=15){
-          diffDirhist1.Fill(diffDirAbs);}
-      else if(abs(deltaE)>=30){
+      if(abs(deltaE)<15){
+          diffDirhist1.Fill(diffDirAbs);
+          mrdRecohist1.Fill(trueMuonEnergy,recoMrd);}
+      else if(abs(deltaE)>30){
           diffDirhist2.Fill(diffDirAbs);
+          mrdRecohist2.Fill(trueMuonEnergy,recoMrd);
       }
       
       //for specific event analysis
@@ -198,6 +205,20 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend3.AddEntry(&diffDirhist2,"diffDirAbs for #DeltaE/E>=30%","l");
     legend3.Draw("Same");
     c6.SaveAs("diffDirplot.png");
+
+    c7.cd();
+    mrdRecohist1.SetStats(0);
+    mrdRecohist1.Draw("ColZ");
+    mrdRecohist1.SetFillColorAlpha(kBlue-4, 0.35);
+    mrdRecohist2.SetFillColorAlpha(kRed+2, 0.35);
+    mrdRecohist2.SetStats(0);
+    mrdRecohist2.Draw("ColZ");
+    TLegend legend4(0.7,0.7,0.9,0.9);
+    legend3.AddEntry(&mrdRecohist1,"recoTrackLengthInMrd for #DeltaE/E<10%","l");
+    legend3.AddEntry(&mrdRecohist1,"recoTrackLengthInMrd for #DeltaE/E>30%","l");
+    legend3.Draw("Same")
+    c7.Draw();
+    c7.SaveAs("recoMRD.png");
 
   return true;
 }
