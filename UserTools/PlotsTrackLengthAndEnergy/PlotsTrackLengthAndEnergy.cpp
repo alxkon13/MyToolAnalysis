@@ -207,8 +207,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c6.SaveAs("diffDirplot.png");
 
     c7.cd();
-    mrdRecohist1.SetStats(0);
-    mrdRecohist1.Draw("ColZ");
+    mrdRecohist.SetStats(0);
+    mrdRecohist.Draw("ColZ");
     c7.Draw();
     c7.SaveAs("recoMRD.png");
 
