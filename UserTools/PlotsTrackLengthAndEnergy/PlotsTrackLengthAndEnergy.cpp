@@ -209,14 +209,6 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c7.cd();
     mrdRecohist1.SetStats(0);
     mrdRecohist1.Draw("ColZ");
-    mrdRecohist1.SetFillColorAlpha(kBlue-4, 0.35);
-    mrdRecohist2.SetFillColorAlpha(kRed+2, 0.35);
-    mrdRecohist2.SetStats(0);
-    mrdRecohist2.Draw("ColZ");
-    TLegend legend4(0.7,0.7,0.9,0.9);
-    legend3.AddEntry(&mrdRecohist1,"recoTrackLengthInMrd for #DeltaE/E<10%","l");
-    legend3.AddEntry(&mrdRecohist1,"recoTrackLengthInMrd for #DeltaE/E>30%","l");
-    legend3.Draw("Same");
     c7.Draw();
     c7.SaveAs("recoMRD.png");
 
