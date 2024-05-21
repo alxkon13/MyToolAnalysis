@@ -5,6 +5,7 @@
 #include "TLegend.h"
 #include "TAxis.h"
 #include "TLine.h"
+#include "TStyle"
 
 PlotsTrackLengthAndEnergy::PlotsTrackLengthAndEnergy():Tool(){}
 
