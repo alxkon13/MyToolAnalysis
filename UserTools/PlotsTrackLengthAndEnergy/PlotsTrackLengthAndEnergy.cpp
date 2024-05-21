@@ -195,7 +195,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     //for specific event analysis
 
     TExec *ex1 = new TExec("ex1","gStyle->SetPalette(kBird);");
-    TExec *ex2 = new TExec("ex2","gStyle->SetPalette(kInvertedDarkBodyRadiator);");
+    TExec *ex2 = new TExec("ex2","gStyle->SetPalette(kWaterMelon);");
 
   
     c6.cd();
