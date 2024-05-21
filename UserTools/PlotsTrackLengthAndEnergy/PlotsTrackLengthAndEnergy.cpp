@@ -5,7 +5,7 @@
 #include "TLegend.h"
 #include "TAxis.h"
 #include "TLine.h"
-#include "TStyle.h"
+#include "TExec.h"
 
 PlotsTrackLengthAndEnergy::PlotsTrackLengthAndEnergy():Tool(){}
 
@@ -193,15 +193,20 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     std::cout<<"Number of entries with DeltaE/E>=15% : "<<k<<std::endl;
 
     //for specific event analysis
+
+    TExec *ex1 = new TExec("ex1","gStyle->SetPalette(kBird);");
+    TExec *ex2 = new TExec("ex2","gStyle->SetPalette(kInvertedDarkBodyRadiator);");
+
+  
     c6.cd();
     mrdRecohist1.Draw();
     mrdRecohist1.SetStats(0);
-    //mrdRecohist1.SetPalette(kBird);
-    mrdRecohist1.Draw("ColZ");
-    mrdRecohist2.Draw("Same");
+    mrdRecohist1.Draw("Col");
+    ex1.Draw();
+    mrdRecohist1.Draw("ColZ Same");
+    ex2.Draw();
+    mrdRecohist2.Draw("ColZ Same");
     mrdRecohist2.SetStats(0);
-    //mrdRecohist2.SetPalette(kInvertedDarkBodyRadiator);
-    //mrdRecohist2.Draw("ColZ");
     /*TLegend legend3(0.7,0.7,0.9,0.9);
     legend3.AddEntry(&diffDirhist1,"recoTrackLengthInMrd for #DeltaE/E<=10%","l");
     legend3.AddEntry(&diffDirhist2,"recoTrackLengthInMrd for #DeltaE/E>=20%","l");
