@@ -195,17 +195,16 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     //for specific event analysis
 
     TExec *ex1 = new TExec("ex1","gStyle->SetPalette(kBird);");
-    TExec *ex2 = new TExec("ex2","gStyle->SetPalette(kCherry);");
-
+    TExec *ex2 = new TExec("ex2","gStyle->SetPalette(kRainbow);");
   
     c6.cd();
     mrdRecohist1.Draw();
     mrdRecohist1.SetStats(0);
     mrdRecohist1.Draw("Col");
     ex1->Draw();
-    mrdRecohist1.Draw("ColZ Same0");
+    mrdRecohist1.Draw("ColZ Same");
     ex2->Draw();
-    mrdRecohist2.Draw("ColZ Same0");
+    mrdRecohist2.Draw("ColZ Same");
     mrdRecohist2.SetStats(0);
     /*TLegend legend3(0.7,0.7,0.9,0.9);
     legend3.AddEntry(&diffDirhist1,"recoTrackLengthInMrd for #DeltaE/E<=10%","l");
