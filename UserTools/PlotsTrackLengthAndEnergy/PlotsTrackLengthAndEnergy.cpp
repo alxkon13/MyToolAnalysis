@@ -196,11 +196,11 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c6.cd();
     mrdRecohist1.Draw();
     mrdRecohist1.SetStats(0);
-    mrdRecohist1.SetPalette(kBird);
+    //mrdRecohist1.SetPalette(kBird);
     mrdRecohist1.Draw("ColZ");
     mrdRecohist2.Draw("Same0");
     mrdRecohist2.SetStats(0);
-    mrdRecohist2.SetPalette(kInvertedDarkBodyRadiator);
+    //mrdRecohist2.SetPalette(kInvertedDarkBodyRadiator);
     mrdRecohist2.Draw("ColZ");
     /*TLegend legend3(0.7,0.7,0.9,0.9);
     legend3.AddEntry(&diffDirhist1,"recoTrackLengthInMrd for #DeltaE/E<=10%","l");
