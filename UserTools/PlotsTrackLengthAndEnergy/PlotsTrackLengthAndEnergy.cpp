@@ -195,7 +195,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     //for specific event analysis
 
     TExec *ex1 = new TExec("ex1","gStyle->SetPalette(kBird);");
-    TExec *ex2 = new TExec("ex2","gStyle->SetPalette(kRainbow);");
+    TExec *ex2 = new TExec("ex2","gStyle->SetPalette(kRainBow);");
   
     c6.cd();
     mrdRecohist1.Draw();
