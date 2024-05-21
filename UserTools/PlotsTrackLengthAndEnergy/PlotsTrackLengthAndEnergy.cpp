@@ -44,7 +44,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     
     //for specific event analysis  
     TCanvas c6("c6","c6",1280,1024);
-    TCanvas c7("c7","c7",1280,1024);
+    //TCanvas c7("c7","c7",1280,1024);
   
     TH2D lengthhist("True_RecoLength", "Reco Track Length vs MC Track Length; MC Track Length [cm]; Reconstructed Track Length [cm]", 50, 0, 400., 50, 0., 400.);
     TH2D energyhist("True_Reco_Energy", "Reco Energy vs MC Energy;  E_{MC} [MeV]; E_{reco} [MeV]", 100, 0, 2000., 100, 0., 2000.);
@@ -195,14 +195,14 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     c6.cd();
     mrdRecohist1.Draw();
     mrdRecohist1.SetStats(0);
-    mrdRecohist1.SetFillColorAlpha(kBlue-4, 0.35);
-    mrdRecohist2.SetLineColor(kRed);
-    mrdRecohist2.SetFillColorAlpha(kRed+2, 0.35);
+    mrdRecohist1.SetPalette(kBird);
     mrdRecohist2.Draw("Same");
-    TLegend legend3(0.7,0.7,0.9,0.9);
+    mrdRecohist1.SetStats(0);
+    mrdRecohist1.SetPalette(kInvertedDarkBodyRadiator);
+    /*TLegend legend3(0.7,0.7,0.9,0.9);
     legend3.AddEntry(&diffDirhist1,"recoTrackLengthInMrd for #DeltaE/E<=10%","l");
     legend3.AddEntry(&diffDirhist2,"recoTrackLengthInMrd for #DeltaE/E>=20%","l");
-    legend3.Draw("Same");
+    legend3.Draw("Same");*/
     c6.SaveAs("diffDirplot.png");
 
     /*c7.cd();
