@@ -55,9 +55,10 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D deltaenergy("Relative Error", "Energy Relative Error %;#DeltaE/E (%)", 100, 0, 0); 
 
     //for specific event analysis  
-    TH1D diffDirhist1("diffDirAbs deltaE<10%", "diffDirAbs histogram", 100, 0, 0);
-    TH1D diffDirhist2("diffDirAbs deltaE>30%", "diffDirAbs", 100, 0, 0);
-    TH2D mrdRecohist("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy, #DeltaE/E<10%; E_{MC} [MeV]; Reco TRack Length in MRD [cm]", 100, 0, 2000., 100, 0., 300.);
+    //TH1D diffDirhist1("diffDirAbs deltaE<10%", "diffDirAbs histogram", 100, 0, 0);
+    //TH1D diffDirhist2("diffDirAbs deltaE>30%", "diffDirAbs", 100, 0, 0);
+    TH2D mrdRecohist1("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy, #DeltaE/E<10%; E_{MC} [MeV]; Reco Track Length in MRD [cm]", 100, 0, 2000., 100, 0., 300.);
+    TH2D mrdRecohist2("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy, #DeltaE/E>20%; E_{MC} [MeV]; Reco Track Length in MRD [cm]", 100, 0, 2000., 100, 0., 300.);
   
     int k=0;
 
@@ -91,11 +92,12 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       deltaL = 100*(TrueTrackLengthInWater-DNNRecoLength)/TrueTrackLengthInWater;
       
       //for specific event analysis      
-      if(abs(deltaE)<15){
-          diffDirhist1.Fill(diffDirAbs);
-          mrdRecohist.Fill(trueMuonEnergy,recoTrackLengthInMrd);}
-      else if(abs(deltaE)>30){
-          diffDirhist2.Fill(diffDirAbs);
+      if(abs(deltaE)<10){
+          //diffDirhist1.Fill(diffDirAbs);
+          mrdRecohist1.Fill(trueMuonEnergy,recoTrackLengthInMrd);}
+      else if(abs(deltaE)>20){
+          //diffDirhist2.Fill(diffDirAbs);
+          mrdRecohist2.Fill(trueMuonEnergy,recoTrackLengthInMrd);      
       }
       
       //for specific event analysis
@@ -191,24 +193,23 @@ bool PlotsTrackLengthAndEnergy::Execute(){
 
     //for specific event analysis
     c6.cd();
-    //c6.SetLogy();
-    diffDirhist1.Draw();
-    diffDirhist1.SetStats(0);
-    diffDirhist1.SetFillColorAlpha(kBlue-4, 0.35);
-    diffDirhist2.SetLineColor(kRed);
-    diffDirhist2.SetFillColorAlpha(kRed+2, 0.35);
-    diffDirhist2.Draw("Same");
+    mrdRecohist1.Draw();
+    mrdRecohist1.SetStats(0);
+    mrdRecohist1.SetFillColorAlpha(kBlue-4, 0.35);
+    mrdRecohist2.SetLineColor(kRed);
+    mrdRecohist2.SetFillColorAlpha(kRed+2, 0.35);
+    mrdRecohist2.Draw("Same");
     TLegend legend3(0.7,0.7,0.9,0.9);
-    legend3.AddEntry(&diffDirhist1,"diffDirAbs for #DeltaE/E<=10%","l");
-    legend3.AddEntry(&diffDirhist2,"diffDirAbs for #DeltaE/E>=30%","l");
+    legend3.AddEntry(&diffDirhist1,"recoTrackLengthInMrd for #DeltaE/E<=10%","l");
+    legend3.AddEntry(&diffDirhist2,"recoTrackLengthInMrd for #DeltaE/E>=20%","l");
     legend3.Draw("Same");
     c6.SaveAs("diffDirplot.png");
 
-    c7.cd();
+    /*c7.cd();
     mrdRecohist.SetStats(0);
     mrdRecohist.Draw("ColZ");
     c7.Draw();
-    c7.SaveAs("recoMRD.png");
+    c7.SaveAs("recoMRD.png");*/
 
   return true;
 }
