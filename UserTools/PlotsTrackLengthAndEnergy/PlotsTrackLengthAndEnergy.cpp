@@ -58,8 +58,8 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     //for specific event analysis  
     //TH1D diffDirhist1("diffDirAbs deltaE<10%", "diffDirAbs histogram", 100, 0, 0);
     //TH1D diffDirhist2("diffDirAbs deltaE>30%", "diffDirAbs", 100, 0, 0);
-    TH2D mrdRecohist1("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy, #DeltaE/E<10%; E_{MC} [MeV]; Reco Track Length in MRD [cm]", 100, 0, 2000., 100, 0., 300.);
-    TH2D mrdRecohist2("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy, #DeltaE/E>20%; E_{MC} [MeV]; Reco Track Length in MRD [cm]", 100, 0, 2000., 100, 0., 300.);
+    TH2D mrdRecohist1("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy; E_{MC} [MeV]; Reco Track Length in MRD [cm]", 100, 0, 2000., 100, 0., 300.);
+    TH2D mrdRecohist2("recoTrackLengthInMrd", "recoTrackLengthInMrd vs MC Energy", 100, 0, 2000., 100, 0., 300.);
   
     int k=0;
 
@@ -201,12 +201,12 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     mrdRecohist2.Draw("Same");
     mrdRecohist2.SetStats(0);
     //mrdRecohist2.SetPalette(kInvertedDarkBodyRadiator);
-    mrdRecohist2.Draw("ColZ");
+    //mrdRecohist2.Draw("ColZ");
     /*TLegend legend3(0.7,0.7,0.9,0.9);
     legend3.AddEntry(&diffDirhist1,"recoTrackLengthInMrd for #DeltaE/E<=10%","l");
     legend3.AddEntry(&diffDirhist2,"recoTrackLengthInMrd for #DeltaE/E>=20%","l");
     legend3.Draw("Same");*/
-    c6.SaveAs("diffDirplot.png");
+    c6.SaveAs("recoMRD.png");
 
     /*c7.cd();
     mrdRecohist.SetStats(0);
