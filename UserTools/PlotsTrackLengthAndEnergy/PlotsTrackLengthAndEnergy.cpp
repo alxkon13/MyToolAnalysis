@@ -198,7 +198,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     mrdRecohist1.SetStats(0);
     //mrdRecohist1.SetPalette(kBird);
     mrdRecohist1.Draw("ColZ");
-    mrdRecohist2.Draw("Same0");
+    mrdRecohist2.Draw("Same");
     mrdRecohist2.SetStats(0);
     //mrdRecohist2.SetPalette(kInvertedDarkBodyRadiator);
     mrdRecohist2.Draw("ColZ");
