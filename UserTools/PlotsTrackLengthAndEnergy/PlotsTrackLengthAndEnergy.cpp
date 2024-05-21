@@ -210,6 +210,11 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend3.AddEntry(&diffDirhist1,"recoTrackLengthInMrd for #DeltaE/E<=10%","l");
     legend3.AddEntry(&diffDirhist2,"recoTrackLengthInMrd for #DeltaE/E>=20%","l");
     legend3.Draw("Same");*/
+    TPaletteAxis *palette = (TPaletteAxis*)h_myHisto->GetListOfFunctions()->FindObject("palette");
+    palette->SetX1NDC(0.9);
+    palette->SetX2NDC(0.95);
+    palette->SetY1NDC(0.2);
+    palette->SetY2NDC(0.8);
     c6.SaveAs("recoMRD.png");
 
     /*c7.cd();
