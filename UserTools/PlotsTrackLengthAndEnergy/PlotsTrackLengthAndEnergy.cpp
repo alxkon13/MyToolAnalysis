@@ -207,7 +207,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     mrdRecohist2.Draw("ColZ Same0");
     mrdRecohist2.SetStats(0);
     TLegend legend3(0.7,0.7,0.9,0.9);
-    legend3.Draw("Same");*/
+    legend3.Draw("Same");
     c6.SaveAs("recoMRD.root");
 
     /*c7.cd();
