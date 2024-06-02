@@ -102,7 +102,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
       }
       
       //for specific event analysis
-      if(abs(deltaE)>=15){
+      if(abs(deltaE)>=20){
           lengthhist.Fill(TrueTrackLengthInWater,DNNRecoLength);
           energyhist.Fill(trueMuonEnergy,BDTMuonEnergy);
           lengthresol1.Fill(TMath::Abs(DNNRecoLength-TrueTrackLengthInWater));
@@ -190,7 +190,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     deltaenergy.SetFillColorAlpha(kBlue-4, 0.35);
     c5.SaveAs("deltaenergy.png");
 
-    std::cout<<"Number of entries with DeltaE/E>=15% : "<<k<<std::endl;
+    std::cout<<"Number of entries with DeltaE/E>=25% : "<<k<<std::endl;
 
     //for specific event analysis
 
