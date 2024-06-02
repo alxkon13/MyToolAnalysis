@@ -190,7 +190,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     deltaenergy.SetFillColorAlpha(kBlue-4, 0.35);
     c5.SaveAs("deltaenergy.png");
 
-    std::cout<<"Number of entries with DeltaE/E>=25% : "<<k<<std::endl;
+    std::cout<<"Number of entries with DeltaE/E>=20% : "<<k<<std::endl;
 
     //for specific event analysis
 
