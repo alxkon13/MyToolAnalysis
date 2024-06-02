@@ -204,11 +204,9 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     ex1->Draw();
     mrdRecohist1.Draw("ColZ Same0");
     ex2->Draw();
-    //mrdRecohist2.Draw("ColZ Same0");
+    mrdRecohist2.Draw("ColZ Same0");
     mrdRecohist2.SetStats(0);
-    /*TLegend legend3(0.7,0.7,0.9,0.9);
-    legend3.AddEntry(&diffDirhist1,"recoTrackLengthInMrd for #DeltaE/E<=10%","l");
-    legend3.AddEntry(&diffDirhist2,"recoTrackLengthInMrd for #DeltaE/E>=20%","l");
+    TLegend legend3(0.7,0.7,0.9,0.9);
     legend3.Draw("Same");*/
     c6.SaveAs("recoMRD.root");
 
