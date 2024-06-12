@@ -166,7 +166,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     trueenergy.Draw();
     trueenergy.SetStats(0);
     trueenergy.SetFillColorAlpha(kBlue-4, 0.35);
-    c5=6.SaveAs("trueenergy.png");
+    c6.SaveAs("trueenergy.png");
   
   return true;
 }
