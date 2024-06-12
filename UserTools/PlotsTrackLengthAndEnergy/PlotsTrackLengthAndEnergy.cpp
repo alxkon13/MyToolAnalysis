@@ -53,7 +53,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     TH1D energyresol1("MC Energy", "Energy Resolution;Energy [MeV]", 100, 0, 0);
     TH1D energyresol2("BDT Energy", "Energy Resolution", 100, 0, 0);
     TH1D deltaenergy("Relative Error", "Energy Relative Error %;#DeltaE/E (%)", 100, 0, 0); 
-    TH1D trueenergy("True Energy", "E_{MC} [MeV]", 100, 0, 0);
+    TH1D trueenergy("True Energy", "True Muon Energy; E_{MC} [MeV]", 100, 0, 0);
   
     /*std::string OutputDataFile;
     get_ok = m_variables.Get("OutputDataFile",OutputDataFile);
