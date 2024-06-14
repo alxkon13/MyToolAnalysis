@@ -158,7 +158,7 @@ bool FindTrackLengthInWater::Execute(){
       }
       //Don't use events without true track length in the MRD
       double TrueTrackLengthInMRD;
-      auto get_MRDTrackLength = m_data->Stores.at("RecoEvent")->Get("TrueTrackLengthInMRD", TrueTrackLengthInMRD);
+      auto get_MrdTrackLength = m_data->Stores.at("RecoEvent")->Get("TrueTrackLengthInMRD", TrueTrackLengthInMRD);
       if(TrueTrackLengthInMRD<=0.){
       Log("FindTrackLengthInWater Tool: No MRD track, skipping",v_message,verbosity);
       return true;
