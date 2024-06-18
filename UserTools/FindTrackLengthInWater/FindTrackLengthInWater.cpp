@@ -156,13 +156,14 @@ bool FindTrackLengthInWater::Execute(){
     MRDTrackLength = sqrt(pow((StopVertex.X()-StartVertex.X()),2)+pow(StopVertex.Y()-StartVertex.Y(),2)+pow(StopVertex.Z()-StartVertex.Z(),2)) * 100.0;
       }
       }
+      /*
       //Don't use events without true track length in the MRD
       double TrueTrackLengthInMRD;
       auto get_MrdTrackLength = m_data->Stores.at("RecoEvent")->Get("TrueTrackLengthInMRD", TrueTrackLengthInMRD);
       if(TrueTrackLengthInMRD<=0.){
       Log("FindTrackLengthInWater Tool: No MRD track, skipping",v_message,verbosity);
       return true;
-      }
+      }*/
       
       /*
       //Don't use events without reconstructed track length in the MRD
