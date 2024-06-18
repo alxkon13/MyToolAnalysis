@@ -119,10 +119,10 @@ bool FindTrackLengthInWater::Execute(){
    Int_t recoStatus = theExtendedVertex->GetStatus();
    double recoVtxFOM = theExtendedVertex->GetFOM();
    Log("FindTrackLengthInWater Tool: recoVtxFOM="+to_string(recoVtxFOM),v_debug,verbosity);
-   if(recoVtxFOM<=0.){
+   /*if(recoVtxFOM<=0.){
      Log("FindTrackLengthInWater Tool: Vertex reconstruction failed, skipping",v_message,verbosity);
      return true;
-   }
+   }*/
    Log("FindTrackLengthInWater Tool: Vertex reconstruction cuts passed",v_debug,verbosity);
    count3++;
    
