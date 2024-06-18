@@ -11,7 +11,7 @@ RecoPMTVolCut 0
 RecoFVCut 0
 PMTMRDCoincCut 0
 PMTMRDOffset 0 //For MC, 745 for Data
-NoVeto 0
+NoVeto 1
 NHitCut 1
 PromptTrigOnly 1
 SaveStatusToStore 1
