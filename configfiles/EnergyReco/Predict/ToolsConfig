@@ -18,4 +18,4 @@ FindTrackLengthInWater FindTrackLengthInWater configfiles/EnergyReco/Predict/Fin
 #BDTMuonEnergyPredict PythonScript configfiles/EnergyReco/Predict/BDTMuonEnergyPredictConfig
 #PlotsTrackLengthAndEnergy PlotsTrackLengthAndEnergy configfiles/EnergyReco/Predict/PlotsTrackLengthAndEnergyConfig
 
-#PhaseIITreeMaker PhaseIITreeMaker configfiles/EnergyReco/Predict/PhaseIITreeMakerConfig
+PhaseIITreeMaker PhaseIITreeMaker configfiles/EnergyReco/Predict/PhaseIITreeMakerConfig
