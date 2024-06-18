@@ -2,14 +2,14 @@
 
 verbosity 0
 MCPMTVolCut 0
-MCFVCut 0
+MCFVCut 1
 MCMRDCut 1
 MCPiKCut 0
 MCIsMuonCut 1
 MRDRecoCut 0
 RecoPMTVolCut 0
 RecoFVCut 0
-PMTMRDCoincCut 0
+PMTMRDCoincCut 1
 PMTMRDOffset 0 //For MC, 745 for Data
 NoVeto 1
 NHitCut 1
