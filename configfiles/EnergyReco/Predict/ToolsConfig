@@ -1,8 +1,8 @@
 # predict machine learning algorithm
 myLoadWCSim LoadWCSim configfiles/EnergyReco/Predict/LoadWCSimConfig
 myLoadWCSimLAPPD LoadWCSimLAPPD configfiles/EnergyReco/Predict/LoadWCSimLAPPDConfig
-#myMCParticleProperties MCParticleProperties configfiles/EnergyReco/Predict/MCParticlePropertiesConfig
-#MCRecoEventLoader MCRecoEventLoader configfiles/EnergyReco/Predict/MCRecoEventLoaderConfig
+myMCParticleProperties MCParticleProperties configfiles/EnergyReco/Predict/MCParticlePropertiesConfig
+MCRecoEventLoader MCRecoEventLoader configfiles/EnergyReco/Predict/MCRecoEventLoaderConfig
 #DigitBuilder DigitBuilder configfiles/EnergyReco/Predict/DigitBuilderConfig
 #HitCleaner HitCleaner configfiles/EnergyReco/Predict/HitCleanerConfig
 #ClusterFinder ClusterFinder configfiles/EnergyReco/Predict/ClusterFinderConfig
