@@ -1,6 +1,6 @@
 # predict machine learning algorithm
-#myLoadWCSim LoadWCSim configfiles/EnergyReco/Predict/LoadWCSimConfig
-#myLoadWCSimLAPPD LoadWCSimLAPPD configfiles/EnergyReco/Predict/LoadWCSimLAPPDConfig
+myLoadWCSim LoadWCSim configfiles/EnergyReco/Predict/LoadWCSimConfig
+myLoadWCSimLAPPD LoadWCSimLAPPD configfiles/EnergyReco/Predict/LoadWCSimLAPPDConfig
 #myMCParticleProperties MCParticleProperties configfiles/EnergyReco/Predict/MCParticlePropertiesConfig
 #MCRecoEventLoader MCRecoEventLoader configfiles/EnergyReco/Predict/MCRecoEventLoaderConfig
 #DigitBuilder DigitBuilder configfiles/EnergyReco/Predict/DigitBuilderConfig
@@ -16,4 +16,4 @@
 #FindTrackLengthInWater FindTrackLengthInWater configfiles/EnergyReco/Predict/FindTrackLengthInWaterConfig
 #DNNTrackLengthPredict PythonScript configfiles/EnergyReco/Predict/DNNTrackLengthPredictConfig
 #BDTMuonEnergyPredict PythonScript configfiles/EnergyReco/Predict/BDTMuonEnergyPredictConfig
-PlotsTrackLengthAndEnergy PlotsTrackLengthAndEnergy configfiles/EnergyReco/Predict/PlotsTrackLengthAndEnergyConfig
+#PlotsTrackLengthAndEnergy PlotsTrackLengthAndEnergy configfiles/EnergyReco/Predict/PlotsTrackLengthAndEnergyConfig
