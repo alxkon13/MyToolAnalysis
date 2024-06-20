@@ -136,7 +136,7 @@ bool PlotsTrackLengthAndEnergy::Execute(){
     legend1.AddEntry(&lengthresol2,"#DeltaR = |L_{estimation}-L_{MC}| [cm]","l");
     legend1.AddEntry((TObject*)0, TString::Format("mean = %.2f, std = %.2f, Prev: mean = %.2f, std = %.2f ", lengthresol1.GetMean(),lengthresol1.GetStdDev(),lengthresol2.GetMean(),lengthresol2.GetStdDev()), "");
     legend1.Draw("Same");
-    c4.SaveAs("resol_length.png");
+    c4.SaveAs("resol_length.root");
 
     double meanDeltaE = deltaenergy.GetMean();
     std::stringstream meandeltaE;
