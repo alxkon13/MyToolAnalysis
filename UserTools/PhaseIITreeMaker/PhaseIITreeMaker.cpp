@@ -30,6 +30,7 @@ bool PhaseIITreeMaker::Initialise(std::string configfile, DataModel &data){
   m_variables.Get("TankClusterProcessing",TankClusterProcessing);
   m_variables.Get("MRDClusterProcessing",MRDClusterProcessing);
   m_variables.Get("TriggerProcessing",TriggerProcessing);
+  m_variables.Get("Digit_fill", Digit_fill);
 
   std::string output_filename;
   m_variables.Get("OutputFile", output_filename);
