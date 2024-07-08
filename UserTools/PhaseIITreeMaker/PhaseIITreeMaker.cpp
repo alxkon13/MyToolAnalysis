@@ -1271,7 +1271,7 @@ void PhaseIITreeMaker::LoadDigitHits(){
        auto get_digits=m_data->Stores.at("RecoEvent")->Get("RecoDigit", digitList);
        if(not get_digits){
          Log("PhaseIITreeMaker Tool: Failed to retrieve the RecoDigit from RecoEvent Store!",v_error,verbosity);
-         return false;
+         return;
           }
    // Extract the PMT & LAPPD digit information
    // ===============================
