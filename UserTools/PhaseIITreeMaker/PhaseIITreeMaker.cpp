@@ -1269,11 +1269,10 @@ void PhaseIITreeMaker::LoadAllMRDHits(bool IsData){
 void PhaseIITreeMaker::LoadDigitHits(){
     // get digits from RecoDigit store
        std::vector<RecoDigit>* digitList;
-       bool get_digits=false;
-       get_digits=m_data->Stores.at("RecoEvent")->Get("RecoDigit", digitList);
-       if(!get_digits){
+       auto get_digits=m_data->Stores.at("RecoEvent")->Get("RecoDigit", digitList);
+       if(not get_digits){
          Log("PhaseIITreeMaker Tool: Failed to retrieve the RecoDigit from RecoEvent Store!",v_error,verbosity);
-         return;
+         return false;
           }
    // Extract the PMT & LAPPD digit information
    // ===============================
