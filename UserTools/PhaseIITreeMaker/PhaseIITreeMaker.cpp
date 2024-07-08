@@ -170,10 +170,10 @@ bool PhaseIITreeMaker::Initialise(std::string configfile, DataModel &data){
     
     
   if(Digit_fill){
-      fPhaseIIMRDClusterTree->Branch("digitX",&digitX);
-      fPhaseIIMRDClusterTree->Branch("digitY",&digitY);
-      fPhaseIIMRDClusterTree->Branch("digitZ",&digitZ);
-      fPhaseIIMRDClusterTree->Branch("digitT",&digitT);
+      fPhaseIITrigTree->Branch("digitX",&digitX);
+      fPhaseIITrigTree->Branch("digitY",&digitY);
+      fPhaseIITrigTree->Branch("digitZ",&digitZ);
+      fPhaseIITrigTree->Branch("digitT",&digitT);
     }
 
     //Some lower level information to save
