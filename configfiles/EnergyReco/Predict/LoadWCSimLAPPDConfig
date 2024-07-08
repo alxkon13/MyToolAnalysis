@@ -5,8 +5,8 @@ verbose 0
 #InputFile /pnfs/annie/persistent/simulations/wcsim/G1810a0211a/standard/tank/lappd/wcsim_lappd_0* #James's files
 #InputFile /exp/annie/data/users/akonsta/lappd_predict/wcsim_lappd_0* #ones currently needed
 InputFile /exp/annie/data/users/akonsta/lappd_predict/wcsim_lappd_0.31.10*
-InputFile /exp/annie/data/users/akonsta/lappd_predict/wcsim_lappd_0.31.11*
-InputFile /exp/annie/data/users/akonsta/lappd_predict/wcsim_lappd_0.31.12*
+#InputFile /exp/annie/data/users/akonsta/lappd_predict/wcsim_lappd_0.31.11*
+#InputFile /exp/annie/data/users/akonsta/lappd_predict/wcsim_lappd_0.31.12*
 
 
 WCSimVersion 10               ## should reflect the WCSim version of the files being loaded
