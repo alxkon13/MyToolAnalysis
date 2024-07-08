@@ -168,13 +168,12 @@ bool PhaseIITreeMaker::Initialise(std::string configfile, DataModel &data){
     fPhaseIITrigTree->Branch("startTime",&fStartTime_Tree,"startTime/l");
     
     
-    /*/
   if(Digit_fill){
       fPhaseIIMRDClusterTree->Branch("digitX",&digitX);
       fPhaseIIMRDClusterTree->Branch("digitY",&digitY);
       fPhaseIIMRDClusterTree->Branch("digitZ",&digitZ);
+      fPhaseIIMRDClusterTree->Branch("digitT",&digitT);
     }
-    /*/
 
     //Some lower level information to save
     fPhaseIITrigTree->Branch("eventNumber",&fEventNumber,"eventNumber/I");
@@ -780,7 +779,7 @@ bool PhaseIITreeMaker::Execute(){
  
     if(MRDHitInfo_fill) this->LoadAllMRDHits(isData);
     
-  //if(Digit_fill) this->LoadDigitHits();
+    if(Digit_fill) this->LoadDigitHits();
 
     if(MRDReco_fill){
       fNumClusterTracks=0;
@@ -1034,14 +1033,13 @@ void PhaseIITreeMaker::ResetVariables() {
     fDeltaAngle = -9999;
   }
   
-  /*/
   if (Digit_fill){
     digitX.clear();
     digitY.clear();
     digitZ.clear();
+    digitT.clear();
     }
     
-  /*/
 }
 
 bool PhaseIITreeMaker::LoadTankClusterClassifiers(double cluster_time){
@@ -1267,8 +1265,6 @@ void PhaseIITreeMaker::LoadAllMRDHits(bool IsData){
   return;
 }
 
-
- /*/   
 void PhaseIITreeMaker::LoadDigitHits(){
     // get digits from RecoDigit store
        std::vector<RecoDigit>* digitList;
@@ -1293,9 +1289,7 @@ void PhaseIITreeMaker::LoadDigitHits(){
         Log("PhaseIITreeMaker Tool: Got "+to_string(totalPMTs)+" PMT digits; "+to_string(digitT.size()) +" total digits so far",v_debug,verbosity);
         Log("PhaseIITreeMaker Tool: Got "+to_string(totalLAPPDs)+" LAPPD digits; "+to_string(digitT.size()) +" total digits",v_debug,verbosity);
    return;
-}       
-/*/
-
+}      
 
 int PhaseIITreeMaker::LoadMRDTrackReco(int SubEventID) {
   //Check for valid track criteria
