@@ -50,7 +50,7 @@ class PhaseIITreeMaker: public Tool {
   bool LoadTankClusterClassifiers(double cluster_time);
   void LoadAllTankHits(bool IsData);
   void LoadSiPMHits();
-  voif LoadDigitHits();
+  void LoadDigitHits();
 
  private:
 
