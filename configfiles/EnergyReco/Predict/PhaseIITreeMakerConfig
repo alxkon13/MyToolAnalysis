@@ -13,6 +13,6 @@ MCTruth_fill 1
 Reco_fill 0
 RecoDebug_fill 0
 muonTruthRecoDiff_fill 1
-Digit_Fill 1
+Digit_fill 1
 IsData 0
 HasGenie 0
