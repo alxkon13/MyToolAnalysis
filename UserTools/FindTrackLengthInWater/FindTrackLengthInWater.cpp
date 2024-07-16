@@ -156,7 +156,7 @@ bool FindTrackLengthInWater::Execute(){
     MRDTrackLength = sqrt(pow((StopVertex.X()-StartVertex.X()),2)+pow(StopVertex.Y()-StartVertex.Y(),2)+pow(StopVertex.Z()-StartVertex.Z(),2)) * 100.0;
       }
       }
-
+      /*
       //Don't use events without true track length in the MRD
       double TrueTrackLengthInMRD;
       auto get_MrdTrackLength = m_data->Stores.at("RecoEvent")->Get("TrueTrackLengthInMRD", TrueTrackLengthInMRD);
@@ -165,12 +165,12 @@ bool FindTrackLengthInWater::Execute(){
       return true;
       }
 	
-      /*
+      */
       //Don't use events without reconstructed track length in the MRD
       if(MRDTrackLength<=0.){
       Log("FindTrackLengthInWater Tool: MRD reconstruction failed, skipping",v_message,verbosity);
       return true;
-      }*/
+      }
       count1++;
 
    // That's all the cuts!
@@ -438,7 +438,7 @@ bool FindTrackLengthInWater::Finalise(){
   std::cout<<"processed a total of "<<count4<<" events, of which "
            <<count2<<" passed event selection cuts, "<<count3
            <<" had a reconstructed vertex and "<<count1
-           <<" also had a positive true MRD track length"<<std::endl; //reconstructed normally
+           <<" also had a positive reco MRD track length"<<std::endl; //reconstructed normally
   std::cout<<"FindTrackLengthInWater Tool: processed "<<count1<<" events"<<std::endl;
 
   return true;
