@@ -55,7 +55,7 @@ bool PhaseIITreeMaker::Initialise(std::string configfile, DataModel &data){
   }
  
   if(TankClusterProcessing){
-    fPhaseIITankClusterTree->Branch("runNumber",&fRunNumber,"runNumber/I"); 
+    fPhaseIITankClusterTree->Branch("runNumber",&fRunNumber,"runNumber/I");
     fPhaseIITankClusterTree->Branch("subrunNumber",&fSubrunNumber,"subrunNumber/I");
     fPhaseIITankClusterTree->Branch("runType",&fRunType,"runType/I");
     fPhaseIITankClusterTree->Branch("startTime",&fStartTime_Tree,"startTime/l");
@@ -268,7 +268,7 @@ bool PhaseIITreeMaker::Initialise(std::string configfile, DataModel &data){
       fPhaseIITrigTree->Branch("recoVtxX",&fRecoVtxX,"recoVtxX/D");
       fPhaseIITrigTree->Branch("recoVtxY",&fRecoVtxY,"recoVtxY/D");
       fPhaseIITrigTree->Branch("recoVtxZ",&fRecoVtxZ,"recoVtxZ/D");
-      fPhaseIITrigTree->Branch("recoVtxTime"	,&fRecoVtxTime,"recoVtxTime/D");
+      fPhaseIITrigTree->Branch("recoVtxTime",&fRecoVtxTime,"recoVtxTime/D");
       fPhaseIITrigTree->Branch("recoDirX",&fRecoDirX,"recoDirX/D");
       fPhaseIITrigTree->Branch("recoDirY",&fRecoDirY,"recoDirY/D");
       fPhaseIITrigTree->Branch("recoDirZ",&fRecoDirZ,"recoDirZ/D");
@@ -791,29 +791,29 @@ bool PhaseIITreeMaker::Execute(){
     //DIGITS
     /*/
     if(Digit_fill){
-        // get digits from RecoDigit store
+       // get digits from RecoDigit store
        std::vector<RecoDigit>* digitList;
        auto get_digits=m_data->Stores.at("RecoEvent")->Get("RecoDigit", digitList);
        if(not get_digits){
          Log("PhaseIITreeMaker Tool: Failed to retrieve the RecoDigit from RecoEvent Store!",v_error,verbosity);
          return false;
-          }
-   // Extract the PMT & LAPPD digit information
-   // ===============================
-        int totalPMTs =0; // number of digits from PMT hits in the event
-        int totalLAPPDs = 0; // number of digits from LAPPD hits in the event
-  //loop through all digits
-        for(RecoDigit &adigit : *digitList){
+       }
+       // Extract the PMT & LAPPD digit information
+       // ===============================
+       int totalPMTs =0; // number of digits from PMT hits in the event
+       int totalLAPPDs = 0; // number of digits from LAPPD hits in the event
+       //loop through all digits
+       for(RecoDigit &adigit : *digitList){
 	   digitX.push_back(adigit.GetPosition().X());
 	   digitY.push_back(adigit.GetPosition().Y());
 	   digitZ.push_back(adigit.GetPosition().Z());
 	   digitT.push_back(adigit.GetCalTime());
 	   if(adigit.GetDigitType()==0){totalPMTs+=1;} //when the digit type is zero we have a PMT digit
 	   else{totalLAPPDs+=1;}// when it is 1 we have LAPPD
-           }
-        Log("PhaseIITreeMaker Tool: Got "+to_string(totalPMTs)+" PMT digits; "+to_string(digitT.size()) +" total digits so far",v_debug,verbosity);
-        Log("PhaseIITreeMaker Tool: Got "+to_string(totalLAPPDs)+" LAPPD digits; "+to_string(digitT.size()) +" total digits",v_debug,verbosity);
-     }
+       }
+       Log("PhaseIITreeMaker Tool: Got "+to_string(totalPMTs)+" PMT digits; "+to_string(digitT.size()) +" total digits so far",v_debug,verbosity);
+       Log("PhaseIITreeMaker Tool: Got "+to_string(totalLAPPDs)+" LAPPD digits; "+to_string(digitT.size()) +" total digits",v_debug,verbosity);
+    }
 /*/
 
     if(MRDReco_fill){
